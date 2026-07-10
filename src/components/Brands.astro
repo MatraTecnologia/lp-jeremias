@@ -1,5 +1,10 @@
 ---
 import { clients } from "../data/content";
+
+const loopClients = [...clients, ...clients, ...clients].map((c, i) => ({
+  ...c,
+  dup: i >= clients.length,
+}));
 ---
 
 <section id="clientes" class="relative border-y border-line bg-surface py-20 md:py-24">
@@ -14,23 +19,28 @@ import { clients } from "../data/content";
     </p>
   </div>
 
-  <div class="marquee reveal mt-14" style="--delay:240ms">
-    <div class="marquee__track" data-marquee-track>
+  <div class="brands-marquee swiper reveal mt-14" style="--delay:240ms">
+    <div class="swiper-wrapper">
       {
-        clients.map((c) => (
+        loopClients.map((c) => (
           <a
             href={c.url}
             target="_blank"
             rel="noopener"
             title={`${c.name} — ${c.segment}`}
-            class="marquee__item group flex h-20 w-44 shrink-0 items-center justify-center rounded-xl border border-line px-6 transition hover:border-accent/40"
+            aria-hidden={c.dup ? "true" : undefined}
+            tabindex={c.dup ? -1 : undefined}
+            class="swiper-slide group flex h-20 items-center justify-center px-6"
           >
             {c.logo ? (
               <img
                 src={c.logo}
                 alt={`Logo ${c.name}`}
                 loading="lazy"
-                class="max-h-9 w-auto max-w-full object-contain opacity-55 transition duration-300 [filter:brightness(0)_invert(1)] group-hover:opacity-100"
+                class:list={[
+                  "max-h-10 w-auto max-w-full object-contain opacity-55 transition duration-300 group-hover:opacity-100",
+                  !("keepColor" in c && c.keepColor) && "[filter:brightness(0)_invert(1)]",
+                ]}
               />
             ) : (
               <span class="font-display text-sm font-bold text-fg opacity-70 transition group-hover:opacity-100">
@@ -45,41 +55,21 @@ import { clients } from "../data/content";
 </section>
 
 <script>
-  const SPEED = 50; // px por segundo
+  import Swiper from "swiper";
+  import { Autoplay } from "swiper/modules";
+  import "swiper/css";
 
-  const fill = (marquee: HTMLElement) => {
-    const track = marquee.querySelector<HTMLElement>("[data-marquee-track]");
-    if (!track) return;
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    track.querySelectorAll("[data-clone]").forEach((n) => n.remove());
-    const originals = Array.from(track.children);
-    if (!originals.length) return;
-
-    let guard = 0;
-    while (track.scrollWidth < marquee.clientWidth * 2 && guard < 30) {
-      originals.forEach((el) => {
-        const clone = el.cloneNode(true) as HTMLElement;
-        clone.setAttribute("data-clone", "");
-        clone.setAttribute("aria-hidden", "true");
-        clone.setAttribute("tabindex", "-1");
-        track.appendChild(clone);
-      });
-      guard++;
-    }
-
-    const firstClone = track.querySelector<HTMLElement>("[data-clone]");
-    if (!firstClone) return;
-    const shift = firstClone.offsetLeft;
-    track.style.setProperty("--marquee-shift", `${shift}px`);
-    track.style.setProperty("--marquee-duration", `${shift / SPEED}s`);
-  };
-
-  const marquees = Array.from(document.querySelectorAll<HTMLElement>(".marquee"));
-  marquees.forEach(fill);
-
-  let raf = 0;
-  window.addEventListener("resize", () => {
-    cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(() => marquees.forEach(fill));
+  new Swiper(".brands-marquee", {
+    modules: [Autoplay],
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    loop: true,
+    speed: 4000,
+    allowTouchMove: true,
+    autoplay: prefersReduced
+      ? false
+      : { delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true },
   });
 </script>

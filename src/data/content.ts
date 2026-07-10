@@ -32,7 +32,7 @@ export const saas = [
   { name: "SpotAgência", desc: "Portal do cliente com resultados em tempo real.", url: "https://spotagencia.com.br/", logo: "/logos/spotagencia.svg" },
   { name: "Matra CRM", desc: "Funil de vendas integrado ao Meta Ads.", url: "https://matratecnologiacrm.com/", logo: "/logos/matra-crm.png" },
   { name: "NotifyX", desc: "Disparos em massa no WhatsApp para vendas.", url: "https://www.notifyx.com.br/", logo: "/logos/notifyx.webp" },
-  { name: "SharkPage", desc: "Criador de landing pages drag & drop.", url: "https://sharkpage.com.br/", logo: "/logos/sharkpage.ico" },
+  { name: "SharkPage", desc: "Criador de landing pages drag & drop.", url: "https://sharkpage.com.br/", logo: null },
   { name: "SpotForm", desc: "Formulários inteligentes de captura.", url: "https://spotform.com.br/", logo: "/logos/spotform.png" },
   { name: "Fire Bank", desc: "Gestão financeira e fluxo de caixa.", url: "https://firebank.app.br/", logo: "/logos/firebank.png" },
   { name: "StrikeLead", desc: "Geração e qualificação de leads.", url: "https://strikelead.com.br/", logo: "/logos/strikelead.png" },
@@ -42,11 +42,13 @@ export const saas = [
 export const clients = [
   { name: "V7 Imobiliária", segment: "Imobiliária", url: "https://v7imobiliaria.com/", logo: "/logos/clientes/v7-imobiliaria-black.png" },
   { name: "Decol Design", segment: "Móveis & decoração", url: "https://decoldesign.com.br/", logo: "/logos/clientes/decol-design.webp" },
-  { name: "Bengô Açaí", segment: "Franquia de açaí", url: "https://bengoacai.com/", logo: "/logos/clientes/bengo-acai.png" },
+  { name: "Bengô Açaí", segment: "Franquia de açaí", url: "https://bengoacai.com/", logo: "/logos/clientes/bengo-acai.svg" },
   { name: "Reina Detailing", segment: "Estética automotiva", url: "https://www.instagram.com/reinastudiocardetailing", logo: "/logos/clientes/reina.webp" },
-  { name: "Comafe Autopeças", segment: "Autopeças diesel", url: "https://www.comafeautopecas.com.br/", logo: null },
+  { name: "Comafe Autopeças", segment: "Autopeças diesel", url: "https://www.comafeautopecas.com.br/", logo: "/logos/clientes/comafe.svg", keepColor: true },
   { name: "Dra. Fernanda Oliveira", segment: "Harmonização estética", url: "https://lpdrfernandaoliveira.matratecnologia.com/", logo: "/logos/clientes/dra-fernanda-oliveira.png" },
-  { name: "Elias Gomes", segment: "Arquitetura & obras", url: "https://www.instagram.com/eliasgomes.arq", logo: "/logos/clientes/elias-arquiteto.svg" },
+
+  { name: "Léo Fernandes Corretor", segment: "Corretor de imóveis", url: "https://www.leofernandesbroker.com.br/", logo: "/logos/clientes/leo-fernandes.png" },
+  { name: "Anjos Colchões e Sofás", segment: "Colchões & sofás", url: "https://anjoscolchoesesofas.com.br/", logo: "/logos/clientes/anjos.svg" },
 ];
 
 export const videoTestimonials = [
