@@ -11,12 +11,9 @@ const { title, description } = Astro.props;
 
 const geoPosition = `${site.geo.lat};${site.geo.lng}`;
 const icbm = `${site.geo.lat}, ${site.geo.lng}`;
-const keywords = [
-  "gestor em Londrina",
-  "estrategista de marketing Norte do Paraná",
-  "negócios digitais Londrina",
-  "Jeremias Matra",
-].join(", ");
+const keywords = site.keywords.join(", ");
+const ogImage = new URL("/og-image.jpg", site.url).href;
+const logoUrl = new URL("/icone-jeremias.svg", site.url).href;
 
 const sameAs = Object.values(site.social).filter(Boolean);
 
@@ -24,17 +21,42 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      inLanguage: "pt-BR",
+      publisher: { "@id": `${site.url}/#person` },
+    },
+    {
       "@type": "Person",
       "@id": `${site.url}/#person`,
       name: site.fullName,
       alternateName: site.name,
+      url: site.url,
+      image: ogImage,
+      description: site.description,
       jobTitle: site.role,
       worksFor: { "@id": `${site.url}/#organization` },
+      hasOccupation: {
+        "@type": "Occupation",
+        name: "Gestor de Tráfego Pago",
+        occupationLocation: {
+          "@type": "City",
+          name: `${site.city}, ${site.uf}`,
+        },
+        skills: site.services.join(", "),
+      },
       knowsAbout: [
-        "Gestão Empresarial",
+        "Gestão de Tráfego Pago",
+        "Google Ads",
+        "Meta Ads",
+        "Facebook Ads",
+        "Instagram Ads",
         "Estratégia de Marketing",
+        "Gestão Empresarial",
         "Negócios Digitais",
-        "Tráfego Pago",
+        "SEO",
       ],
       address: {
         "@type": "PostalAddress",
@@ -49,12 +71,19 @@ const jsonLd = {
       "@id": `${site.url}/#organization`,
       name: "Matra Tecnologia",
       url: site.matraUrl,
+      logo: logoUrl,
       founder: { "@id": `${site.url}/#person` },
+      areaServed: site.areaServed,
+      sameAs,
     },
     {
       "@type": "ProfessionalService",
       "@id": `${site.url}/#localbusiness`,
       name: site.name,
+      description: site.description,
+      url: site.url,
+      image: ogImage,
+      priceRange: "$$",
       areaServed: site.areaServed,
       telephone: `+${site.whatsapp}`,
       geo: {
@@ -67,6 +96,14 @@ const jsonLd = {
         addressLocality: site.city,
         addressRegion: site.uf,
         addressCountry: "BR",
+      },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Serviços",
+        itemListElement: site.services.map((service) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: service },
+        })),
       },
     },
     {
@@ -88,20 +125,26 @@ const jsonLd = {
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={site.url} />
-<meta name="robots" content="index,follow" />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
 <meta name="keywords" content={keywords} />
+<meta name="author" content={site.fullName} />
 
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content={site.url} />
+<meta property="og:site_name" content={site.name} />
 <meta property="og:locale" content="pt_BR" />
-<meta property="og:image" content="/og-image.jpg" />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={site.ogImageAlt} />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content="/og-image.jpg" />
+<meta name="twitter:image" content={ogImage} />
+<meta name="twitter:image:alt" content={site.ogImageAlt} />
 
 <meta name="geo.region" content="BR-PR" />
 <meta name="geo.placename" content={site.city} />
