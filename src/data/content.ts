@@ -39,13 +39,14 @@ export const saas = [
   { name: "Foguete App", desc: "Marketplace de soluções SaaS.", url: "https://fogueteapp.com.br/", logo: "/logos/fogueteapp.png" },
 ];
 
-export const brands = [
-  { name: "[PREENCHER: marca 1]" },
-  { name: "[PREENCHER: marca 2]" },
-  { name: "[PREENCHER: marca 3]" },
-  { name: "[PREENCHER: marca 4]" },
-  { name: "[PREENCHER: marca 5]" },
-  { name: "[PREENCHER: marca 6]" },
+export const clients = [
+  { name: "V7 Imobiliária", segment: "Imobiliária", url: "https://v7imobiliaria.com/", logo: "/logos/clientes/v7-imobiliaria-black.png" },
+  { name: "Decol Design", segment: "Móveis & decoração", url: "https://decoldesign.com.br/", logo: "/logos/clientes/decol-design.webp" },
+  { name: "Bengô Açaí", segment: "Franquia de açaí", url: "https://bengoacai.com/", logo: "/logos/clientes/bengo-acai.png" },
+  { name: "Reina Detailing", segment: "Estética automotiva", url: "https://www.instagram.com/reinastudiocardetailing", logo: "/logos/clientes/reina.webp" },
+  { name: "Comafe Autopeças", segment: "Autopeças diesel", url: "https://www.comafeautopecas.com.br/", logo: null },
+  { name: "Dra. Fernanda Oliveira", segment: "Harmonização estética", url: "https://lpdrfernandaoliveira.matratecnologia.com/", logo: "/logos/clientes/dra-fernanda-oliveira.png" },
+  { name: "Elias Gomes", segment: "Arquitetura & obras", url: "https://www.instagram.com/eliasgomes.arq", logo: "/logos/clientes/elias-arquiteto.svg" },
 ];
 
 export const videoTestimonials = [
