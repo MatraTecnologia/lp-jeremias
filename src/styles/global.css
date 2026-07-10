@@ -223,7 +223,8 @@ body::after {
   display: flex;
   width: max-content;
   gap: 1rem;
-  animation: marquee 32s linear infinite;
+  will-change: transform;
+  animation: marquee var(--marquee-duration, 32s) linear infinite;
 }
 
 .marquee:hover .marquee__track {
@@ -231,19 +232,19 @@ body::after {
 }
 
 @keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
   to {
-    transform: translateX(-50%);
+    transform: translateX(calc(-1 * var(--marquee-shift, 0px)));
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .marquee {
+    mask-image: none;
+    overflow-x: auto;
+  }
+
   .marquee__track {
     animation: none;
-    flex-wrap: wrap;
-    width: 100%;
   }
 }
 

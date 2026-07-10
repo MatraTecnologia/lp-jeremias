@@ -1,10 +1,5 @@
 ---
 import { clients } from "../data/content";
-
-const track = [
-  ...clients.map((c) => ({ ...c, dup: false })),
-  ...clients.map((c) => ({ ...c, dup: true })),
-];
 ---
 
 <section id="clientes" class="relative border-y border-line bg-surface py-20 md:py-24">
@@ -20,17 +15,15 @@ const track = [
   </div>
 
   <div class="marquee reveal mt-14" style="--delay:240ms">
-    <div class="marquee__track">
+    <div class="marquee__track" data-marquee-track>
       {
-        track.map((c) => (
+        clients.map((c) => (
           <a
             href={c.url}
             target="_blank"
             rel="noopener"
             title={`${c.name} — ${c.segment}`}
-            aria-hidden={c.dup ? "true" : undefined}
-            tabindex={c.dup ? -1 : undefined}
-            class="group flex h-20 w-44 shrink-0 items-center justify-center rounded-xl border border-line px-6 transition hover:border-accent/40"
+            class="marquee__item group flex h-20 w-44 shrink-0 items-center justify-center rounded-xl border border-line px-6 transition hover:border-accent/40"
           >
             {c.logo ? (
               <img
@@ -50,3 +43,43 @@ const track = [
     </div>
   </div>
 </section>
+
+<script>
+  const SPEED = 50; // px por segundo
+
+  const fill = (marquee: HTMLElement) => {
+    const track = marquee.querySelector<HTMLElement>("[data-marquee-track]");
+    if (!track) return;
+
+    track.querySelectorAll("[data-clone]").forEach((n) => n.remove());
+    const originals = Array.from(track.children);
+    if (!originals.length) return;
+
+    let guard = 0;
+    while (track.scrollWidth < marquee.clientWidth * 2 && guard < 30) {
+      originals.forEach((el) => {
+        const clone = el.cloneNode(true) as HTMLElement;
+        clone.setAttribute("data-clone", "");
+        clone.setAttribute("aria-hidden", "true");
+        clone.setAttribute("tabindex", "-1");
+        track.appendChild(clone);
+      });
+      guard++;
+    }
+
+    const firstClone = track.querySelector<HTMLElement>("[data-clone]");
+    if (!firstClone) return;
+    const shift = firstClone.offsetLeft;
+    track.style.setProperty("--marquee-shift", `${shift}px`);
+    track.style.setProperty("--marquee-duration", `${shift / SPEED}s`);
+  };
+
+  const marquees = Array.from(document.querySelectorAll<HTMLElement>(".marquee"));
+  marquees.forEach(fill);
+
+  let raf = 0;
+  window.addEventListener("resize", () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => marquees.forEach(fill));
+  });
+</script>

@@ -1,8 +1,8 @@
 export const stats = [
   { value: "+R$4M", label: "em faturamento gerado" },
-  { value: "[PREENCHER]", label: "clientes atendidos" },
-  { value: "[PREENCHER]", label: "anos de mercado" },
-  { value: "[PREENCHER]", label: "SaaS fundados" },
+  { value: "+100", label: "clientes atendidos" },
+  { value: "+8", label: "anos de experiência" },
+  { value: "+10", label: "SaaS fundados" },
 ];
 
 export const expertise = [
