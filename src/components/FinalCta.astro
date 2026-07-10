@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import { site, whatsappHref } from "../data/site.ts";
+import ctaImg from "../assets/jeremias/MATRA-065.jpg";
+---
+
+<section id="contato" class="relative overflow-hidden bg-surface">
+  <div class="pointer-events-none absolute -bottom-32 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]"></div>
+  <div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 py-24 md:py-32 lg:grid-cols-2">
+    <div>
+      <p class="kicker reveal">Vamos conversar</p>
+      <h2 class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg reveal md:text-4xl" style="--delay:80ms">
+        Pronto para levar sua gestão e seu marketing a outro nível?
+      </h2>
+      <p class="mt-6 max-w-xl leading-relaxed text-muted reveal" style="--delay:160ms">
+        Se você tem um negócio na região de Londrina e do Norte do Paraná e
+        quer crescer com gestão estruturada e estratégia de marketing que
+        gera resultado, fale agora com Jeremias Matra.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-6 reveal" style="--delay:240ms">
+        <a href={whatsappHref} target="_blank" rel="noopener" class="btn btn-primary px-8 py-4 text-lg">
+          Falar no WhatsApp agora
+        </a>
+        <a href={`mailto:${site.email}`} class="text-muted transition-colors hover:text-fg">
+          {site.email}
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal frame frame--right" style="--delay:120ms">
+      <Image
+        src={ctaImg}
+        alt="Jeremias Matra — entre em contato"
+        widths={[400, 600]}
+        sizes="(max-width:768px) 90vw, 40vw"
+        class="aspect-[4/5] w-full rounded-2xl object-cover ring-1 ring-line"
+      />
+    </div>
+  </div>
+</section>

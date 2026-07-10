@@ -1,0 +1,29 @@
+---
+import { brands } from "../data/content";
+
+const track = [...brands, ...brands];
+---
+
+<section class="relative border-y border-line bg-surface py-20">
+  <div class="rule-gold absolute top-0"></div>
+  <div class="mx-auto max-w-6xl px-6 text-center">
+    <p class="kicker kicker--center reveal justify-center">Parcerias</p>
+    <h2 class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg reveal md:text-4xl" style="--delay:80ms">
+      Marcas e empresas que já confiaram
+    </h2>
+  </div>
+
+  <div class="marquee reveal mt-14" style="--delay:160ms">
+    <div class="marquee__track">
+      {
+        track.map((b) => (
+          <div class="flex h-20 w-48 shrink-0 items-center justify-center rounded-xl border border-line text-center text-muted opacity-60 grayscale transition hover:text-fg hover:opacity-100">
+            <span class="px-2 font-display text-sm font-semibold">
+              {b.name.startsWith("[PREENCHER") ? "Logo" : b.name}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

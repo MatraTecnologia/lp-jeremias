@@ -1,0 +1,50 @@
+---
+import { gallery } from "../data/content";
+---
+
+<section id="galeria" class="relative bg-surface/40">
+  <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
+    <div class="max-w-2xl">
+      <p class="kicker reveal">Galeria</p>
+      <h2
+        class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg reveal md:text-4xl"
+        style="--delay:80ms"
+      >
+        Bastidores de quem vive o que ensina
+      </h2>
+      <p class="mt-5 leading-relaxed text-muted reveal" style="--delay:160ms">
+        Eventos, palestras, escritório e o dia a dia à frente da Matra Tecnologia.
+      </p>
+    </div>
+
+    <div class="mt-14 columns-2 gap-4 md:columns-3 lg:columns-4 [&>*]:mb-4">
+      {
+        gallery.map((item, i) => (
+          <figure
+            class={`reveal relative flex items-center justify-center overflow-hidden rounded-2xl border border-line bg-surface-2 ${item.span === "tall" ? "aspect-[3/4]" : "aspect-square"}`}
+            style={`--delay:${i * 60}ms`}
+          >
+            <div class="flex flex-col items-center gap-2 text-muted/30">
+              <svg
+                width="34"
+                height="34"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+                aria-hidden="true"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <circle cx="8.5" cy="10" r="1.5" />
+                <path d="M21 16l-5-5-6 6" />
+              </svg>
+            </div>
+            <figcaption class="absolute bottom-3 left-3 text-xs uppercase tracking-[0.16em] text-muted/60">
+              {item.category}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>

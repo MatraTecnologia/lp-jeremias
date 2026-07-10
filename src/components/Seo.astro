@@ -1,0 +1,111 @@
+---
+import { site } from "../data/site.ts";
+import { faq } from "../data/content.ts";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+const geoPosition = `${site.geo.lat};${site.geo.lng}`;
+const icbm = `${site.geo.lat}, ${site.geo.lng}`;
+const keywords = [
+  "gestor em Londrina",
+  "estrategista de marketing Norte do Paraná",
+  "negócios digitais Londrina",
+  "Jeremias Matra",
+].join(", ");
+
+const sameAs = Object.values(site.social).filter(Boolean);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${site.url}/#person`,
+      name: site.fullName,
+      alternateName: site.name,
+      jobTitle: site.role,
+      worksFor: { "@id": `${site.url}/#organization` },
+      knowsAbout: [
+        "Gestão Empresarial",
+        "Estratégia de Marketing",
+        "Negócios Digitais",
+        "Tráfego Pago",
+      ],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: site.city,
+        addressRegion: site.uf,
+        addressCountry: "BR",
+      },
+      sameAs,
+    },
+    {
+      "@type": "Organization",
+      "@id": `${site.url}/#organization`,
+      name: "Matra Tecnologia",
+      url: site.matraUrl,
+      founder: { "@id": `${site.url}/#person` },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${site.url}/#localbusiness`,
+      name: site.name,
+      areaServed: site.areaServed,
+      telephone: `+${site.whatsapp}`,
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: site.geo.lat,
+        longitude: site.geo.lng,
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: site.city,
+        addressRegion: site.uf,
+        addressCountry: "BR",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${site.url}/#faq`,
+      mainEntity: faq.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
+    },
+  ],
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={site.url} />
+<meta name="robots" content="index,follow" />
+<meta name="keywords" content={keywords} />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={site.url} />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:image" content="/og-image.jpg" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content="/og-image.jpg" />
+
+<meta name="geo.region" content="BR-PR" />
+<meta name="geo.placename" content={site.city} />
+<meta name="geo.position" content={geoPosition} />
+<meta name="ICBM" content={icbm} />
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

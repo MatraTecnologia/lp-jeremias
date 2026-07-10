@@ -1,0 +1,46 @@
+---
+import { saas } from "../data/content";
+---
+
+<section id="saas" class="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
+  <p class="kicker reveal">Negócios</p>
+  <h2 class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg reveal md:text-4xl" style="--delay:80ms">
+    SaaS &amp; negócios que fundei
+  </h2>
+  <p class="mt-5 max-w-2xl text-muted reveal" style="--delay:160ms">
+    Da ideia ao produto em produção: empresas que construí e ainda opero como fundador.
+  </p>
+
+  <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      saas.map((s, i) => {
+        const initial = s.name.charAt(0).toUpperCase();
+        return (
+          <div class="card reveal p-7" style={`--delay:${i * 100}ms`}>
+            <div class="relative grid h-12 w-12 place-items-center overflow-hidden rounded-xl border border-line bg-bg">
+              <span class="font-display text-lg font-bold text-muted" aria-hidden="true">{initial}</span>
+              <img
+                src={s.logo}
+                alt={`Logo ${s.name}`}
+                loading="lazy"
+                class="absolute inset-0 h-full w-full object-contain p-2"
+                onerror="this.remove()"
+              />
+            </div>
+            <h3 class="mt-5 font-display text-lg font-semibold text-fg">{s.name}</h3>
+            <p class="mt-2 text-sm text-muted">{s.desc}</p>
+            <a
+              href={s.url}
+              target="_blank"
+              rel="noopener"
+              class="group mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent"
+            >
+              Acessar
+              <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+            </a>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>

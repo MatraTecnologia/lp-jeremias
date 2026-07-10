@@ -1,0 +1,79 @@
+---
+import { expertise } from "../data/content";
+---
+
+<section id="atuacao" class="relative bg-bg">
+  <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
+    <div class="max-w-2xl">
+      <p class="kicker reveal">Atuação</p>
+      <h2
+        class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg reveal md:text-4xl"
+        style="--delay:80ms"
+      >
+        Quatro frentes, um só objetivo: crescimento com estrutura
+      </h2>
+      <p class="mt-5 leading-relaxed text-muted reveal" style="--delay:160ms">
+        Gestão, marketing e tecnologia integrados para negócios digitais
+        crescerem na região de Londrina e no Norte do Paraná.
+      </p>
+    </div>
+
+    <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        expertise.map((item, i) => (
+          <article class="card reveal group flex flex-col p-8" style={`--delay:${i * 90}ms`}>
+            <div class="flex items-start justify-between">
+              <span class="flex h-12 w-12 items-center justify-center rounded-full border border-accent/40 text-accent transition-colors duration-500 group-hover:bg-accent/10">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="22"
+                  height="22"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  {item.title === "Gestão Empresarial" && (
+                    <>
+                      <path d="M3 3v18h18" />
+                      <rect x="7" y="12" width="3" height="5.5" rx="0.5" />
+                      <rect x="12" y="8" width="3" height="9.5" rx="0.5" />
+                      <rect x="17" y="5" width="3" height="12.5" rx="0.5" />
+                    </>
+                  )}
+                  {item.title === "Estratégia de Marketing" && (
+                    <>
+                      <circle cx="12" cy="12" r="9" />
+                      <circle cx="12" cy="12" r="5" />
+                      <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none" />
+                    </>
+                  )}
+                  {item.title === "Tráfego Pago" && (
+                    <>
+                      <path d="M3 17l6-6 4 4 7-7" />
+                      <path d="M17 8h4v4" />
+                    </>
+                  )}
+                  {item.title === "Tecnologia & SaaS" && (
+                    <>
+                      <path d="M16 18l6-6-6-6" />
+                      <path d="M8 6l-6 6 6 6" />
+                    </>
+                  )}
+                </svg>
+              </span>
+              <span class="font-display text-3xl font-bold leading-none text-line-strong transition-colors duration-500 group-hover:text-accent/70">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+            </div>
+            <h3 class="mt-7 font-display text-lg font-semibold text-fg">{item.title}</h3>
+            <p class="mt-3 text-sm leading-relaxed text-muted">{item.desc}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

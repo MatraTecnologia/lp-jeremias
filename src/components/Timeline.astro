@@ -1,0 +1,37 @@
+---
+import { timeline } from "../data/content";
+---
+
+<section id="trajetoria" class="relative bg-bg">
+  <div class="mx-auto max-w-5xl px-6 py-24 md:py-32">
+    <div class="max-w-2xl">
+      <p class="kicker reveal">Trajetória</p>
+      <h2
+        class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg reveal md:text-4xl"
+        style="--delay:80ms"
+      >
+        Do começo à referência em gestão e marketing
+      </h2>
+    </div>
+
+    <ol class="relative mt-14 border-l border-line pl-8 md:pl-10">
+      {
+        timeline.map((item, i) => (
+          <li class="reveal relative pb-12 last:pb-0" style={`--delay:${i * 80}ms`}>
+            <span
+              class="absolute -left-[41px] flex h-5 w-5 items-center justify-center rounded-full border border-accent/50 bg-bg md:-left-[49px]"
+              aria-hidden="true"
+            >
+              <span class="h-2 w-2 rounded-full bg-accent" />
+            </span>
+            <p class="font-display text-sm font-semibold uppercase tracking-[0.18em] text-accent">
+              {item.year}
+            </p>
+            <h3 class="mt-2 font-display text-xl font-semibold text-fg">{item.title}</h3>
+            <p class="mt-2 max-w-xl leading-relaxed text-muted">{item.desc}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+---
+import { Image } from "astro:assets";
+import aboutImg from "../assets/jeremias/MATRA-061.jpg";
+---
+
+<section id="sobre" class="relative bg-bg">
+  <div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 py-24 md:py-32 lg:grid-cols-2">
+    <div class="reveal frame frame--left order-2 lg:order-1">
+      <Image
+        src={aboutImg}
+        alt="Jeremias Matra, fundador da Matra Tecnologia"
+        widths={[400, 700]}
+        sizes="(max-width:768px) 90vw, 45vw"
+        class="aspect-[4/5] w-full rounded-2xl object-cover ring-1 ring-line"
+      />
+    </div>
+    <div class="order-1 lg:order-2">
+      <p class="kicker reveal">Sobre</p>
+      <h2 class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg reveal md:text-4xl" style="--delay:80ms">
+        Quem é Jeremias Matra
+      </h2>
+      <div class="mt-7 space-y-4 leading-relaxed text-muted">
+        <p class="reveal" style="--delay:140ms">
+          Jeremias Matra é gestor, estrategista de marketing e fundador da
+          Matra Tecnologia, em Londrina-PR.
+        </p>
+        <p class="reveal" style="--delay:220ms">
+          Desde 2021 à frente da Matra Tecnologia, já ajudou a gerar
+          <span class="font-semibold text-fg"> mais de R$4M em faturamento </span>
+          para clientes através de gestão estratégica, marketing de
+          performance e tecnologia aplicada a negócios digitais. Sua atuação
+          se tornou referência para empresários que buscam crescer de forma
+          estruturada na região de Londrina e Norte do Paraná.
+        </p>
+        <p class="reveal" style="--delay:300ms">
+          Além do trabalho como consultor e mentor, é líder de uma comunidade
+          de empresários de Londrina, compartilhando estratégias práticas de
+          gestão de negócios e marketing digital para quem quer escalar com
+          método.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

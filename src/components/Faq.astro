@@ -1,0 +1,52 @@
+---
+import { faq } from "../data/content";
+---
+
+<section id="faq" class="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
+  <div class="mx-auto max-w-3xl">
+    <p class="kicker reveal">Dúvidas</p>
+    <h2 class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg reveal md:text-4xl" style="--delay:80ms">
+      Perguntas frequentes
+    </h2>
+
+    <div class="mt-12" data-faq>
+      {
+        faq.map((item, i) => (
+          <div class="faq-item reveal border-b border-line py-2" style={`--delay:${i * 80}ms`}>
+            <h3>
+              <button
+                type="button"
+                class="flex w-full cursor-pointer items-center justify-between gap-4 py-4 text-left font-display font-semibold text-fg"
+                aria-expanded="false"
+                aria-controls={`faq-panel-${i}`}
+                id={`faq-trigger-${i}`}
+              >
+                <span>{item.q}</span>
+                <span class="faq-icon flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-accent/40 text-accent" aria-hidden="true">
+                  +
+                </span>
+              </button>
+            </h3>
+            <div id={`faq-panel-${i}`} role="region" aria-labelledby={`faq-trigger-${i}`} class="faq-panel">
+              <div class="faq-panel-inner">
+                <p class="pb-5 leading-relaxed text-muted">{item.a}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const faqRoot = document.querySelector<HTMLElement>("[data-faq]");
+  faqRoot?.querySelectorAll<HTMLButtonElement>("button[aria-expanded]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const item = button.closest(".faq-item");
+      const isOpen = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!isOpen));
+      item?.classList.toggle("is-open", !isOpen);
+    });
+  });
+</script>

@@ -1,0 +1,80 @@
+---
+import { site } from "../data/site";
+
+const servicos = [
+  "Marketing digital",
+  "Tráfego pago",
+  "Sites & sistemas",
+  "SEO",
+  "Automação com IA",
+  "CRM",
+];
+---
+
+<section id="matra" class="relative bg-bg">
+  <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
+    <div
+      class="reveal relative overflow-hidden rounded-3xl border border-accent/30 bg-surface p-8 md:p-14"
+    >
+      <div
+        class="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-accent/10 blur-[100px]"
+      >
+      </div>
+      <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        <div class="order-2 lg:order-1">
+          <div
+            class="relative flex items-center justify-center overflow-hidden rounded-2xl border border-line bg-bg-deep px-8 py-16 md:py-20"
+          >
+            <div
+              class="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_50%_50%,rgba(201,161,90,0.14),transparent_70%)]"
+            >
+            </div>
+            <img
+              src="/logo-matra.svg"
+              alt="Matra Tecnologia"
+              width="340"
+              height="109"
+              loading="lazy"
+              class="relative w-full max-w-[280px] drop-shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
+            />
+          </div>
+          <p class="mt-4 text-center text-xs uppercase tracking-[0.22em] text-muted">
+            Tecnologia · Marketing · Performance
+          </p>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <p class="kicker">Matra Tecnologia</p>
+          <h2
+            class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg md:text-4xl"
+          >
+            A ponte entre gestão pessoal e estrutura de verdade
+          </h2>
+          <p class="mt-5 leading-relaxed text-muted">
+            A Matra Tecnologia, fundada por Jeremias em {site.city}, reúne
+            marketing, tráfego, tecnologia e automação em um só lugar para
+            negócios crescerem com estrutura no {site.regionName}.
+          </p>
+          <ul class="mt-7 flex flex-wrap gap-2.5">
+            {
+              servicos.map((s) => (
+                <li class="inline-flex rounded-full border border-line-strong px-3.5 py-1.5 text-sm text-muted">
+                  {s}
+                </li>
+              ))
+            }
+          </ul>
+          <a
+            href={site.matraUrl}
+            target="_blank"
+            rel="noopener"
+            class="btn btn-primary mt-8 px-7 py-3.5"
+          >
+            Acessar matratecnologia.com
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+---
+import { site, whatsappHref } from "../data/site.ts";
+
+const navLinks = [
+  { href: "#sobre", label: "Sobre" },
+  { href: "#atuacao", label: "Atuação" },
+  { href: "#saas", label: "SaaS" },
+  { href: "#comunidade", label: "Comunidade" },
+  { href: "#contato", label: "Contato" },
+];
+
+const socialLinks = Object.entries(site.social).filter(([, url]) => url);
+---
+
+<footer class="relative border-t border-line bg-surface py-12">
+  <div class="rule-gold absolute top-0"></div>
+  <div class="mx-auto grid max-w-6xl grid-cols-1 gap-10 px-6 md:grid-cols-3">
+    <div>
+      <p class="font-display text-lg font-bold tracking-tight text-fg">
+        Jeremias <span class="text-accent">Matra</span>
+      </p>
+      <p class="mt-3 max-w-xs text-sm text-muted">
+        Gestor e estrategista de marketing, referência em gestão empresarial
+        e marketing digital na região de Londrina.
+      </p>
+      <p class="mt-3 text-sm text-muted">
+        {site.city} · {site.uf} · {site.regionName}
+      </p>
+    </div>
+
+    <nav aria-label="Navegação do rodapé">
+      <p class="mb-3 text-sm uppercase tracking-widest text-accent">Navegação</p>
+      <ul class="space-y-2">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="text-sm text-muted hover:text-fg">
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div>
+      <p class="mb-3 text-sm uppercase tracking-widest text-accent">Contato</p>
+      <ul class="space-y-2">
+        <li>
+          <a href={`mailto:${site.email}`} class="text-sm text-muted hover:text-fg">
+            {site.email}
+          </a>
+        </li>
+        <li>
+          <a href={whatsappHref} target="_blank" rel="noopener" class="text-sm text-muted hover:text-fg">
+            WhatsApp
+          </a>
+        </li>
+        <li>
+          <a href={site.matraUrl} target="_blank" rel="noopener" class="text-sm text-muted hover:text-fg">
+            Matra Tecnologia
+          </a>
+        </li>
+        {
+          socialLinks.map(([name, url]) => (
+            <li>
+              <a href={url} target="_blank" rel="noopener" class="text-sm capitalize text-muted hover:text-fg">
+                {name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+
+  <div class="mx-auto mt-8 max-w-6xl border-t border-line px-6 pt-6">
+    <p class="text-sm text-muted">
+      © {new Date().getFullYear()} Jeremias Matra · Matra Tecnologia · Londrina-PR
+    </p>
+  </div>
+</footer>

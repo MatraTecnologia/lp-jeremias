@@ -1,0 +1,69 @@
+---
+import { stats } from "../data/content";
+---
+
+<section class="relative border-y border-line bg-surface" data-stats>
+  <div class="rule-gold absolute top-0"></div>
+  <div class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <div class="grid grid-cols-2 divide-x divide-line text-center md:grid-cols-4">
+      {
+        stats.map((stat, i) => {
+          const isPlaceholder = stat.value.includes("[PREENCHER]");
+          return (
+            <div class="reveal px-2" style={`--delay:${i * 90}ms`}>
+              <p
+                class="font-display text-4xl font-extrabold tracking-tight text-accent md:text-5xl"
+                data-stat-value={isPlaceholder ? "" : stat.value}
+              >
+                {isPlaceholder ? "—" : stat.value}
+              </p>
+              <p class="mt-2 text-sm text-muted">{stat.label}</p>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector<HTMLElement>("[data-stats]");
+  if (section) {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const targets = section.querySelectorAll<HTMLElement>("[data-stat-value]");
+
+    const animate = (el: HTMLElement) => {
+      const raw = el.dataset.statValue ?? "";
+      const match = raw.match(/^([^\d]*)(\d+)([^\d]*)$/);
+      if (!match || prefersReduced) {
+        el.textContent = raw || el.textContent;
+        return;
+      }
+      const [, prefix, numStr, suffix] = match;
+      const target = Number.parseInt(numStr, 10);
+      const duration = 1400;
+      const start = performance.now();
+
+      const step = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - (1 - progress) ** 3;
+        el.textContent = `${prefix}${Math.round(eased * target)}${suffix}`;
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            targets.forEach((el) => animate(el));
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(section);
+  }
+</script>

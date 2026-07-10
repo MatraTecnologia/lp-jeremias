@@ -1,0 +1,159 @@
+---
+import { testimonials, videoTestimonials } from "../data/content";
+---
+
+<section id="depoimentos" class="relative bg-bg">
+  <div class="mx-auto max-w-6xl px-6 py-24 md:py-32">
+    <p class="kicker reveal">Depoimentos</p>
+    <h2 class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg reveal md:text-4xl" style="--delay:80ms">
+      O que dizem sobre o trabalho
+    </h2>
+
+    <div class="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        videoTestimonials.map((item, i) => (
+          <button
+            type="button"
+            class="video-trigger card reveal group relative block aspect-[9/16] w-full overflow-hidden p-0 text-left"
+            style={`--delay:${i * 100}ms`}
+            data-code={item.code}
+            data-url={item.url}
+            aria-haspopup="dialog"
+            aria-label={`Assistir depoimento em vídeo ${i + 1} no Instagram`}
+          >
+            <span class="absolute inset-0 bg-gradient-to-br from-surface-2 via-surface to-bg-deep" aria-hidden="true" />
+            <span class="pointer-events-none absolute -right-12 -top-12 h-52 w-52 rounded-full bg-accent/25 blur-[70px]" aria-hidden="true" />
+            <span class="absolute left-4 top-4 text-accent/70" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+              </svg>
+            </span>
+            <span class="absolute inset-0 flex items-center justify-center">
+              <span class="flex h-20 w-20 items-center justify-center rounded-full border border-accent/50 bg-bg-deep/60 shadow-[0_0_0_1px_rgba(0,0,0,0.3),0_20px_40px_-15px_rgba(0,0,0,0.7)] backdrop-blur transition-transform duration-500 group-hover:scale-110 group-hover:border-accent">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="translate-x-[2px]">
+                  <path d="M6 4.5 19 12 6 19.5Z" fill="var(--color-accent-soft)" />
+                </svg>
+              </span>
+            </span>
+            <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bg-deep/95 via-bg-deep/50 to-transparent p-5 pt-14">
+              <span class="block text-xs font-semibold uppercase tracking-widest text-accent">Depoimento {String(i + 1).padStart(2, "0")}</span>
+              <span class="mt-1 block text-sm text-muted">Assista no Reels</span>
+            </span>
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 border-t border-line pt-16">
+      <p class="text-xs font-semibold uppercase tracking-widest text-muted/70 reveal">Mais depoimentos</p>
+      <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+        {
+          testimonials.map((item, i) => {
+            const isPlaceholder = item.quote.startsWith("[PREENCHER");
+            if (isPlaceholder) {
+              return (
+                <div class="reveal flex flex-col justify-between rounded-2xl border border-dashed border-line p-7" style={`--delay:${i * 100}ms`}>
+                  <p class="text-sm text-muted">Novo depoimento a caminho.</p>
+                  <p class="mt-6 text-xs uppercase tracking-widest text-muted/70">Em breve</p>
+                </div>
+              );
+            }
+            return (
+              <div class="card reveal relative overflow-hidden p-7" style={`--delay:${i * 100}ms`}>
+                <span class="pointer-events-none absolute -right-2 -top-4 font-display text-8xl font-bold text-accent/10" aria-hidden="true">
+                  &rdquo;
+                </span>
+                <p class="relative leading-relaxed text-fg">{item.quote}</p>
+                <div class="relative mt-6 border-t border-line pt-5">
+                  <p class="font-semibold text-fg">{item.author}</p>
+                  <p class="text-sm text-muted">{item.role}</p>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+
+  <div
+    id="video-lightbox"
+    class="fixed inset-0 z-[100] hidden items-center justify-center p-4"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Depoimento em vídeo"
+    data-lightbox
+  >
+    <div class="absolute inset-0 bg-bg-deep/92 backdrop-blur-sm" data-lightbox-backdrop />
+    <div class="relative w-full max-w-[360px]">
+      <div class="overflow-hidden rounded-2xl border border-line-strong bg-surface shadow-2xl shadow-black/60">
+        <div class="aspect-[9/16] w-full" data-lightbox-embed></div>
+      </div>
+      <div class="mt-4 flex items-center justify-between gap-4">
+        <a
+          data-lightbox-link
+          href="#"
+          target="_blank"
+          rel="noopener"
+          class="text-sm text-muted underline decoration-accent/40 underline-offset-4 transition-colors hover:text-accent"
+        >
+          Ver no Instagram ↗
+        </a>
+        <button
+          type="button"
+          data-lightbox-close
+          class="btn btn-ghost h-10 w-10 rounded-full p-0"
+          aria-label="Fechar depoimento em vídeo"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+            <path d="M5 5 19 19M19 5 5 19" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const lightbox = document.querySelector<HTMLElement>("[data-lightbox]");
+  const embedHost = lightbox?.querySelector<HTMLElement>("[data-lightbox-embed]");
+  const linkEl = lightbox?.querySelector<HTMLAnchorElement>("[data-lightbox-link]");
+  const closeBtn = lightbox?.querySelector<HTMLButtonElement>("[data-lightbox-close]");
+  const backdrop = lightbox?.querySelector<HTMLElement>("[data-lightbox-backdrop]");
+  let lastFocused: HTMLElement | null = null;
+
+  const closeLightbox = () => {
+    if (!lightbox || !embedHost) return;
+    lightbox.classList.add("hidden");
+    lightbox.classList.remove("flex");
+    embedHost.innerHTML = "";
+    document.body.classList.remove("overflow-hidden");
+    lastFocused?.focus();
+  };
+
+  const openLightbox = (code: string, url: string, trigger: HTMLElement) => {
+    if (!lightbox || !embedHost || !linkEl) return;
+    lastFocused = trigger;
+    embedHost.innerHTML = `<iframe src="https://www.instagram.com/reel/${code}/embed/" title="Depoimento em vídeo no Instagram" loading="lazy" allowfullscreen class="h-full w-full border-0"></iframe>`;
+    linkEl.href = url;
+    lightbox.classList.remove("hidden");
+    lightbox.classList.add("flex");
+    document.body.classList.add("overflow-hidden");
+    closeBtn?.focus();
+  };
+
+  document.querySelectorAll<HTMLButtonElement>(".video-trigger").forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      const { code, url } = trigger.dataset;
+      if (code && url) openLightbox(code, url, trigger);
+    });
+  });
+
+  closeBtn?.addEventListener("click", closeLightbox);
+  backdrop?.addEventListener("click", closeLightbox);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox && !lightbox.classList.contains("hidden")) closeLightbox();
+  });
+</script>

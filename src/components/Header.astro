@@ -1,0 +1,62 @@
+---
+import { site, whatsappHref } from "../data/site.ts";
+
+const navLinks = [
+  { href: "#sobre", label: "Sobre" },
+  { href: "#trajetoria", label: "Trajetória" },
+  { href: "#atuacao", label: "Atuação" },
+  { href: "#saas", label: "SaaS" },
+  { href: "#comunidade", label: "Comunidade" },
+  { href: "#galeria", label: "Galeria" },
+  { href: "#contato", label: "Contato" },
+];
+---
+
+<header
+  data-header
+  class="fixed top-0 z-50 w-full border-b border-transparent transition-colors duration-500 [&.is-scrolled]:border-line [&.is-scrolled]:bg-bg/85 [&.is-scrolled]:backdrop-blur-md"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-5">
+    <a href="#" class="font-display text-lg font-bold tracking-tight text-fg">
+      {site.name.split(" ")[0]} <span class="text-accent">Matra</span>
+    </a>
+
+    <nav class="hidden items-center gap-7 lg:flex" aria-label="Navegação principal">
+      {navLinks.map((link) => (
+        <a href={link.href} class="group relative text-sm text-muted transition-colors hover:text-fg">
+          {link.label}
+          <span class="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a href={whatsappHref} target="_blank" rel="noopener" class="btn btn-primary px-4 py-2 text-xs sm:px-5 sm:py-2.5 sm:text-sm">
+        Falar no WhatsApp
+      </a>
+
+      <details class="relative lg:hidden">
+        <summary
+          class="flex list-none cursor-pointer items-center rounded-full border border-line p-2 text-fg [&::-webkit-details-marker]:hidden"
+          aria-label="Abrir menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </summary>
+        <nav
+          class="absolute right-0 top-full mt-3 flex w-48 flex-col gap-4 rounded-2xl border border-line bg-surface px-5 py-5 shadow-lg"
+          aria-label="Navegação móvel"
+        >
+          {navLinks.map((link) => (
+            <a href={link.href} class="text-sm text-muted transition-colors hover:text-fg">
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

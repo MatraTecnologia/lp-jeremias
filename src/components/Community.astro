@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import { whatsappHref } from "../data/site";
+import teamImg from "../assets/jeremias/MATRA-160.jpg";
+---
+
+<section id="comunidade" class="relative bg-bg">
+  <div class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 py-24 md:py-32 lg:grid-cols-2">
+    <div>
+      <p class="kicker reveal">Comunidade</p>
+      <h2 class="mt-5 text-balance font-display text-3xl font-bold tracking-tight text-fg reveal md:text-4xl" style="--delay:80ms">
+        Comunidade de empresários de Londrina
+      </h2>
+      <p class="mt-5 leading-relaxed text-muted reveal" style="--delay:160ms">
+        Jeremias lidera uma comunidade de empresários da região de Londrina
+        voltada a networking, geração de negócios, parcerias estratégicas e
+        troca de experiências entre quem está construindo negócios de verdade.
+      </p>
+      <a href={whatsappHref} target="_blank" rel="noopener" class="btn btn-primary reveal mt-8 px-6 py-3" style="--delay:240ms">
+        Quero participar
+      </a>
+    </div>
+    <div class="reveal frame frame--right" style="--delay:120ms">
+      <Image
+        src={teamImg}
+        alt="Time e comunidade Matra em Londrina"
+        widths={[400, 700]}
+        sizes="(max-width:768px) 90vw, 45vw"
+        class="aspect-[4/3] w-full rounded-2xl object-cover ring-1 ring-line"
+      />
+    </div>
+  </div>
+</section>
