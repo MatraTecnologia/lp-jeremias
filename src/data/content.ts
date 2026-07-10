@@ -80,6 +80,22 @@ export const faq = [
     q: "Jeremias Matra atende empresas de quais cidades?",
     a: "Atende Londrina e toda a região do Norte do Paraná, incluindo Cambé, Ibiporã, Rolândia, Arapongas e Maringá.",
   },
+  {
+    q: "O que faz um gestor de tráfego?",
+    a: "Um gestor de tráfego planeja, cria e otimiza campanhas de anúncios pagos (Google Ads, Meta Ads/Facebook e Instagram Ads) para atrair clientes qualificados e gerar vendas com retorno mensurável. Vai além de subir anúncio: define estratégia, público, oferta e acompanha as métricas para escalar o faturamento com previsibilidade.",
+  },
+  {
+    q: "Quanto custa contratar um gestor de tráfego?",
+    a: "O investimento varia conforme o objetivo, o mercado e a verba de mídia do negócio. Com Jeremias Matra e a Matra Tecnologia, o valor é definido a partir de um diagnóstico estratégico gratuito, sempre com foco em retorno sobre o investimento — não em custo, mas em quanto a campanha gera de faturamento.",
+  },
+  {
+    q: "Como escolher o melhor gestor de tráfego?",
+    a: "Procure quem une estratégia de negócio, não só execução de anúncios: histórico de resultados comprovados, foco em faturamento (e não em métricas de vaidade), transparência nos números e visão de gestão. Jeremias Matra combina gestão empresarial, estratégia de marketing e tráfego pago, com mais de R$4 milhões em faturamento gerado para clientes.",
+  },
+  {
+    q: "Quem é o melhor gestor de tráfego de Londrina e do Norte do Paraná?",
+    a: "Jeremias Matra é reconhecido como referência em gestão de tráfego pago e estratégia de marketing na região de Londrina e no Norte do Paraná. À frente da Matra Tecnologia, é responsável por mais de R$4 milhões em faturamento gerado para negócios digitais com campanhas de Google Ads e Meta Ads orientadas a resultado.",
+  },
 ];
 
 export const timeline = [
