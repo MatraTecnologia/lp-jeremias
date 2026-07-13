@@ -58,9 +58,24 @@ export const videoTestimonials = [
 ];
 
 export const testimonials = [
-  { quote: "[PREENCHER: depoimento]", author: "[PREENCHER]", role: "[cargo/empresa]" },
-  { quote: "[PREENCHER: depoimento]", author: "[PREENCHER]", role: "[cargo/empresa]" },
-  { quote: "[PREENCHER: depoimento]", author: "[PREENCHER]", role: "[cargo/empresa]" },
+  {
+    quote:
+      "A Matra não entrega apenas marketing. Eles entendem o negócio, criam processos, desenvolvem tecnologia quando necessário e realmente se tornam parte da empresa. Foi uma das melhores decisões que tomamos.",
+    author: "Jorge Ferreira",
+    role: "Diretor Comercial • V7 Imobiliária",
+  },
+  {
+    quote:
+      "O diferencial da Matra é unir estratégia, tecnologia e execução. Desde o primeiro mês percebemos mais organização, previsibilidade e resultados consistentes. É uma empresa que pensa no crescimento do cliente.",
+    author: "Luiz Nicolodi",
+    role: "Médico e Empresário",
+  },
+  {
+    quote:
+      "O Spotform é sucesso demais. A plataforma entrega muito mais do que promete e facilitou completamente nossa operação. Dá para perceber o cuidado em cada detalhe.",
+    author: "Lucas Oliveira",
+    role: "CEO • Up Digitais",
+  },
 ];
 
 export const faq = [
@@ -101,43 +116,43 @@ export const faq = [
 export const timeline = [
   {
     year: "Antes de 2021",
-    title: "[PREENCHER: o início]",
-    desc: "[PREENCHER: o que você fazia antes da Matra e sua primeira experiência com negócios/marketing]",
+    title: "O início",
+    desc: "Antes de fundar a Matra, Jeremias já atuava com tecnologia, desenvolvimento de sistemas e marketing digital para pequenos negócios, acumulando experiência prática na criação de soluções digitais e entendendo as dificuldades enfrentadas pelos empresários brasileiros.",
   },
   {
     year: "2021",
-    title: "Fundação da Matra Tecnologia",
-    desc: "Jeremias funda a Matra Tecnologia em Londrina-PR. [PREENCHER: o estopim que fez você começar]",
+    title: "Fundação da Matra",
+    desc: "Nasce a Matra Tecnologia & Marketing com o propósito de unir tecnologia, marketing e inteligência de negócios em uma única empresa, oferecendo soluções completas para acelerar o crescimento de outras empresas.",
   },
   {
-    year: "[ANO]",
+    year: "2024",
     title: "Primeiro grande marco",
-    desc: "[PREENCHER: primeiro cliente relevante ou primeiro R$1M em faturamento]",
+    desc: "A Matra conquista seus primeiros grandes contratos e ultrapassa a marca de R$ 1 milhão faturados, consolidando sua atuação como parceira estratégica para empresas de diversos segmentos.",
   },
   {
-    year: "[ANO]",
+    year: "2025",
     title: "Lançamento dos SaaS",
-    desc: "[PREENCHER: nomes e propósito dos SaaS que você fundou]",
+    desc: "São lançadas as primeiras soluções próprias da empresa, como Spotform, NotifyX e o Matra CRM, plataformas criadas para automatizar processos, aumentar produtividade e tornar empresas mais eficientes através da tecnologia.",
   },
   {
-    year: "[ANO]",
-    title: "Comunidade de empresários de Londrina",
-    desc: "[PREENCHER: criação da comunidade e número de empresários hoje]",
+    year: "2026",
+    title: "Comunidade de empresários",
+    desc: "Nasce a comunidade de empresários da Matra, reunindo líderes e empreendedores para networking, troca de experiências e crescimento conjunto. Hoje a comunidade conecta dezenas de empresários da região em encontros e projetos estratégicos.",
   },
   {
     year: "Hoje",
-    title: "+R$4M em faturamento gerado",
-    desc: "Referência em gestão e estratégia de marketing para negócios digitais no Norte do Paraná. [PREENCHER: sua visão de futuro]",
+    title: "Uma visão nacional",
+    desc: "A visão permanece a mesma: construir uma empresa reconhecida nacionalmente por desenvolver tecnologia, formar líderes e acelerar o crescimento de milhares de empresas através da inovação.",
   },
 ];
 
 export const network = [
-  { name: "[PREENCHER: nome]", role: "[PREENCHER: empresa / cargo]" },
-  { name: "[PREENCHER: nome]", role: "[PREENCHER: empresa / cargo]" },
-  { name: "[PREENCHER: nome]", role: "[PREENCHER: empresa / cargo]" },
-  { name: "[PREENCHER: nome]", role: "[PREENCHER: empresa / cargo]" },
-  { name: "[PREENCHER: nome]", role: "[PREENCHER: empresa / cargo]" },
-  { name: "[PREENCHER: nome]", role: "[PREENCHER: empresa / cargo]" },
+  { name: "Alfredo Soares", role: "Empresário • G4 Educação" },
+  { name: "Talles Gomes", role: "Fundador • G4 Educação" },
+  { name: "Luiz Nicolodi", role: "Médico e Empresário" },
+  { name: "Jorge Ferreira", role: "Diretor Comercial • V7 Imobiliária" },
+  { name: "Lucas Oliveira", role: "CEO • Up Digitais" },
+  { name: "Guto Farias", role: "Empresário • Educação e Marketing" },
 ];
 
 export const gallery = [
@@ -154,7 +169,7 @@ export const gallery = [
 export const personal = {
   title: "Por trás dos resultados, um propósito",
   paragraphs: [
-    "[PREENCHER: fale sobre a sua família, o que te move e os valores que guiam a sua forma de trabalhar]",
-    "[PREENCHER: uma frase pessoal sobre equilíbrio entre vida, família e negócios]",
+    "Casado com Carol e pai do Lucas, Jeremias acredita que empresas sólidas são construídas pelos mesmos princípios que sustentam uma família: responsabilidade, compromisso, fé e constância. Sua missão vai além de vender serviços; é ajudar empresários a crescerem de forma estruturada, utilizando tecnologia, estratégia e inovação para transformar negócios.",
+    "“Acredito que o verdadeiro sucesso acontece quando conseguimos crescer nos negócios sem abrir mão da família, da fé e das pessoas que caminham conosco.”",
   ],
 };
